@@ -1,0 +1,7 @@
+[package]
+name = "rust-multithreading"
+version = "0.1.0"
+authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
+
+[dependencies]
+rayon = ""

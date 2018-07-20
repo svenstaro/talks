@@ -1,0 +1,101 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/serif.css">
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+                    <h1>Rust and Python</h1>
+                    <h2>Oxidize Your Snake</h2>
+					<p>Sven-Hendrik Haase</p>
+                    <p><a href="http://svenstaro.org">svenstaro.org</a></p>
+                </section>
+				<section>
+                    <h2>Motivation</h2>
+                    <ul>
+                        <li class="fragment">Speed up your program</li>
+                        <li class="fragment">Escape the GIL</li>
+                        <li class="fragment">Bind to existing system-libraries</li>
+                    </ul>
+                    <aside class="notes">
+                        TODO
+                    </aside>
+                </section>
+				<section>
+                    <h2>Ways to speed up Python</h2>
+                    <p class="fragment">Python C extensions, ctypes, cffi, Boost.Python, SWIG</p>
+                    <p class="fragment">pypy, cython</p>
+                </section>
+				<section>
+                    <h2>Problems of current approaches</h2>
+                    <p class="fragment">Unsafe</p>
+                    <p class="fragment">C is not ergonomic</p>
+                    <aside class="notes">
+                        Unsafe: Multithreading issues, segmentation faults
+                        C: Not all approaches suffer from this.
+                    </aside>
+                </section>
+				<section>
+                    <h2>Instead, oxidize your snake</h2>
+                    <img src="media/2000px-Python-logo-notext.svg.png">
+                    <img src="media/Rust_programming_language_black_logo.svg.png">
+                    <img src="media/oxidized_snek.jpg">
+                </section>
+                <section>
+                    <h2>What is Rust?</h2>
+                    <ul>
+                        <li class="fragment">Safe</li>
+                        <li class="fragment">Modern</li>
+                        <li class="fragment">Fast</li>
+                    </ul>
+                    <aside class="notes">
+                        Safe: No null pointers, no multithreading issues
+                        Modern: Great unicode support, modern syntax, great tools
+                        Fast: C-like performance
+                    </aside>
+                </section>
+				<section>
+					<h2>What does Rust look like?</h2>
+					<pre><code class="rust" data-code="code/what-rust-looks-like/src/main.rs"></code></pre>
+				</section>
+				<section>
+                    <h2>Rust and Python</h2>
+                    <p>We'll use PyO3</p>
+                </section>
+				<section>
+					<h2>Python module in Rust</h2>
+					<pre><code class="rust" data-code="code/python-module-in-rust/src/main.rs"></code></pre>
+				</section>
+				<section>
+					<h2>Multithreading in Rust</h2>
+					<pre><code class="rust" data-code="code/python-in-rust/src/main.rs"></code></pre>
+                    <pre>$ Hello from Python 3.6.6 (default, Jun 27 2018, 13:11:40)</pre>
+				</section>
+				<section>
+					<h2>Python in Rust</h2>
+					<pre><code class="rust" data-code="code/python-in-rust/src/main.rs"></code></pre>
+                    <pre>$ Hello from Python 3.6.6 (default, Jun 27 2018, 13:11:40)</pre>
+				</section>
+				<section>
+					<h2>Thank you!</h2>
+					<p>Sven-Hendrik Haase</p>
+                    <p><a href="http://svenstaro.org">svenstaro.org</a></p>
+                </section>
+			</div>
+		</div>
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.js"></script>
+		<script>
+            Reveal.initialize({
+            	dependencies: [
+					{ src: 'reveal.js-plugin-externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true },
+				]
+			});
+		</script>
+	</body>
+</html>
