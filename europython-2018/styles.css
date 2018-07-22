@@ -5,3 +5,8 @@
 .col {
     flex: 1;
 }
+
+.vertical-align {
+    vertical-align: middle !important;
+    border: none !important;
+}

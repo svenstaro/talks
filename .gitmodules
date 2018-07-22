@@ -1,9 +1,12 @@
 [submodule "europython-2018/reveal.js"]
-	path = europython-2018/reveal.js
-	url = git@github.com:hakimel/reveal.js.git
+	path = europython-2018/externals/reveal.js
+	url = git://github.com/hakimel/reveal.js.git
 [submodule "europython-2018/headjs"]
 	path = europython-2018/headjs
-	url = git@github.com:headjs/headjs.git
+	url = git://github.com/headjs/headjs.git
 [submodule "europython-2018/reveal.js-plugin-externalcode"]
-	path = europython-2018/reveal.js-plugin-externalcode
-	url = git@github.com:pquerna/reveal.js-plugin-externalcode.git
+	path = europython-2018/externals/reveal.js-plugin-externalcode
+	url = git://github.com/pquerna/reveal.js-plugin-externalcode.git
+[submodule "europython-2018/Font-Awesome"]
+	path = europython-2018/externals/Font-Awesome
+	url = git://github.com/FortAwesome/Font-Awesome.git

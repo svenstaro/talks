@@ -1,9 +1,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="reveal.js/css/reveal.css">
-        <link rel="stylesheet" href="reveal.js/css/theme/serif.css">
-        <link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+        <link rel="stylesheet" href="externals/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="externals/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="externals/reveal.js/css/theme/serif.css">
+        <link rel="stylesheet" href="externals/reveal.js/lib/css/zenburn.css">
     </head>
     <body>
         <div class="reveal">
@@ -41,23 +42,40 @@
                 </section>
                 <section>
                     <h2>Ways to speed up Python</h2>
-                    <p class="fragment">Python C extensions, ctypes, cffi, Boost.Python, SWIG</p>
-                    <p class="fragment">pypy, cython</p>
+                    <p class="fragment" data-fragment-index="1">Manual/C: Python C extensions, ctypes, cffi</p>
+                    <p class="fragment" data-fragment-index="2">Binding generator: Boost.Python, SWIG<span class="fragment" data-fragment-index="6">, <strong><u>PyO3</u></strong></span></p>
+                    <p class="fragment" data-fragment-index="3">Specialized lib: pillow, numpy</p>
+                    <p class="fragment" data-fragment-index="4">JIT: pypy</p>
+                    <p class="fragment" data-fragment-index="5">Python-like dialect: cython</p>
+                    <aside class="notes">
+                        You might disagree with my classifications but this is
+                        just how I think about it.
+                    </aside>
                 </section>
                 <section>
                     <h2>Problems of current approaches</h2>
                     <p class="fragment">Unsafe</p>
                     <p class="fragment">C is not ergonomic</p>
+                    <p class="fragment">JIT unreliable</p>
+                    <p class="fragment">Multithreading</p>
                     <aside class="notes">
-                        Unsafe: Multithreading issues, segmentation faults
-                        C: Not all approaches suffer from this.
+                        Why do we even need a new approach? It seems that we already have plenty of choices.
+                        Unsafe: Multithreading issues (dirty reads, dirty writes, what happens if you have multiple writers?)
+                        Unsafe: Segmentation faults because of invalid memory accesses.
+                        Unsafe: Initialized data
+                        C: Memory management
+                        Specialized libs only work for some problems.
+                        JIT is unpredictable without guarantees.
+                        Other dialects: It's not Python so you might as well do it properly.
                     </aside>
                 </section>
-                <section>
+                <section class="center">
                     <h2>Instead, oxidize your snake</h2>
-                    <img src="media/2000px-Python-logo-notext.svg.png">
-                    <img src="media/Rust_programming_language_black_logo.svg.png">
-                    <img src="media/oxidized_snek.jpg">
+                        <img class="vertical-align" width="150" src="media/2000px-Python-logo-notext.svg.png">
+                        <i class="fas fa-plus"></i>
+                        <img class="vertical-align" width="150" src="media/Rust_programming_language_black_logo.svg.png">
+                        <i class="fas fa-equals"></i>
+                        <img class="vertical-align" width="530" src="media/oxidized_snek.jpg">
                 </section>
                 <section>
                     <h2>What is Rust?</h2>
@@ -115,14 +133,14 @@
                 </section>
             </div>
         </div>
-        <script src="reveal.js/lib/js/head.min.js"></script>
-        <script src="reveal.js/js/reveal.js"></script>
+        <script src="externals/reveal.js/lib/js/head.min.js"></script>
+        <script src="externals/reveal.js/js/reveal.js"></script>
         <script>
             Reveal.initialize({
                 dependencies: [
-                    { src: 'reveal.js-plugin-externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
-                    { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'reveal.js/plugin/notes/notes.js', async: true },
+                    { src: 'externals/reveal.js-plugin-externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                    { src: 'externals/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'externals/reveal.js/plugin/notes/notes.js', async: true },
                 ]
             });
         </script>
