@@ -1,0 +1,19 @@
+[package]
+name = "simple_example"
+version = "0.1.0"
+authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
+
+[lib]
+name = "simple_example"
+crate-type = ["cdylib"]
+
+[dependencies]
+rand = "0.5"
+rayon = "1"
+
+[dependencies.pyo3]
+version = "0.3"
+features = ["extension-module"]
+
+[profile.release]
+lto = true
