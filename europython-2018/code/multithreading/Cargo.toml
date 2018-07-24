@@ -1,7 +1,19 @@
 [package]
-name = "rust-multithreading"
+name = "multithreading"
 version = "0.1.0"
 authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
 
+[lib]
+name = "multithreading"
+crate-type = ["cdylib"]
+
 [dependencies]
-rayon = ""
+rand = "0.5"
+rayon = "1"
+
+[dependencies.pyo3]
+version = "0.3"
+features = ["extension-module"]
+
+[profile.release]
+lto = true

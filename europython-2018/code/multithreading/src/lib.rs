@@ -2,12 +2,14 @@
 
 extern crate pyo3;
 extern crate rand;
+extern crate rayon;
 use pyo3::prelude::*;
 use rand::rngs::SmallRng;
 use rand::{Rng, SeedableRng};
+use rayon::prelude::*;
 
 #[pymodinit]
-fn simple_example(py: Python, m: &PyModule) -> PyResult<()> {
+fn multithreading(py: Python, m: &PyModule) -> PyResult<()> {
     #[pyfn(m, "calc")]
     fn calc_py(iterations: u64) -> PyResult<f64> {
         let out = calc(iterations);
@@ -22,10 +24,11 @@ fn in_circle(x: f64, y: f64) -> bool {
 }
 
 fn calc(iterations: u64) -> f64 {
-    let mut rng = SmallRng::from_rng(rand::thread_rng()).unwrap();
+    let rng = SmallRng::from_rng(rand::thread_rng()).unwrap();
 
     let hits = (1..iterations)
-        .map(|_| {
+        .into_par_iter()
+        .map_with(rng, |rng, _| {
             if in_circle(rng.gen(), rng.gen()) {
                 1
             } else {
