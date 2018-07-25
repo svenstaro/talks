@@ -4,7 +4,7 @@ multithreading.so: src/
 
 .PHONY: run
 run: multithreading.so
-	hyperfine 'python with_rust.py'
+	hyperfine 'python run.py'
 
 .PHONY: clean
 clean:

@@ -16,7 +16,7 @@
                     <p><a href="http://svenstaro.org">svenstaro.org</a></p>
                 </section>
                 <section>
-                    <h2>This talk</h2>
+                    <h3>This talk</h3>
                     <ul>
                         <li class="fragment">Motivation</li>
                         <li class="fragment">Current approaches</li>
@@ -29,7 +29,7 @@
                     </aside>
                 </section>
                 <section>
-                    <h2>Motivation</h2>
+                    <h3>Motivation</h3>
                     <ul>
                         <li class="fragment">Speed up your program</li>
                         <li class="fragment">Escape the GIL (multithreading)</li>
@@ -41,7 +41,7 @@
                     </aside>
                 </section>
                 <section>
-                    <h2>Ways to speed up Python</h2>
+                    <h3>Ways to speed up Python</h3>
                     <p class="fragment" data-fragment-index="1">Manual/C: Python C extensions, ctypes, cffi</p>
                     <p class="fragment" data-fragment-index="2">Binding generator: Boost.Python, SWIG<span class="fragment" data-fragment-index="6">, <strong><u>PyO3</u></strong></span></p>
                     <p class="fragment" data-fragment-index="3">Specialized lib: pillow, numpy</p>
@@ -53,7 +53,7 @@
                     </aside>
                 </section>
                 <section>
-                    <h2>Problems of current approaches</h2>
+                    <h3>Problems of current approaches</h3>
                     <p class="fragment">Unsafe</p>
                     <p class="fragment">C is not ergonomic</p>
                     <p class="fragment">JIT unreliable</p>
@@ -70,7 +70,7 @@
                     </aside>
                 </section>
                 <section class="center">
-                    <h2>Instead, oxidize your snake</h2>
+                    <h3>Instead, oxidize your snake</h3>
                         <img class="vertical-align" width="150" src="media/2000px-Python-logo-notext.svg.png">
                         <i class="fas fa-plus"></i>
                         <img class="vertical-align" width="150" src="media/Rust_programming_language_black_logo.svg.png">
@@ -78,11 +78,12 @@
                         <img class="vertical-align" width="530" src="media/oxidized_snek.jpg">
                 </section>
                 <section>
-                    <h2>What is Rust?</h2>
+                    <h3>What is Rust?</h3>
                     <ul>
                         <li class="fragment">Safe</li>
                         <li class="fragment">Modern</li>
                         <li class="fragment">Fast</li>
+                        <li class="fragment">Statically and strongly typed</li>
                     </ul>
                     <aside class="notes">
                         Safe: No null pointers, no multithreading issues
@@ -91,45 +92,67 @@
                     </aside>
                 </section>
                 <section>
-                    <h2>What Rust looks like</h2>
+                    <h3>What Rust looks like</h3>
                     <div class="container">
                         <div class="col fragment">
-                            <pre><code class="rust" data-code="code/what-rust-looks-like/src/main.rs"></code></pre>
-                        </div>
-                        <div class="col fragment">
-                            <pre><code class="python" data-code="code/what-rust-looks-like/main.py"></code></pre>
-                        </div>
-                    </div>
-                    <pre>
+                            <pre><code class="rust" data-code="code/what_rust_looks_like/src/main.rs"></code></pre>
+                            <pre>
 Hello, Alice
 Hello, Bob
 Hello, Charlie
-                    </pre>
+                            </pre>
+                        </div>
+                        <div class="col fragment">
+                            <pre><code class="python" data-code="code/what_rust_looks_like/main.py"></code></pre>
+                            <pre>
+Hello, Alice
+Hello, Bob
+Hello, Charlie
+                            </pre>
+                        </div>
+                    </div>
                     <aside class="notes">
                         It looks very similar to Python in fact.
                     </aside>
                 </section>
                 <section>
-                    <h2>Rust and Python</h2>
+                    <h3>Rust and Python</h3>
                     <p class="fragment">We'll use PyO3</p>
                     <p class="fragment">Write Python modules in Rust</p>
                     <p class="fragment">Use Python from Rust</p>
                 </section>
                 <section>
-                    <h2>Python module in Rust</h2>
-                    <pre><code class="rust" data-code="code/python-module-in-rust/src/main.rs"></code></pre>
+                    <h3>Python module in Rust</h3>
+                    <pre class="fragment"><code class="rust" data-code="code/simple_bind/src/lib.rs"></code></pre>
+                    <pre class="fragment"><code class="python" data-code="code/simple_bind/run.py"></code></pre>
+                    <pre class="fragment">
+$ python europython.py
+Hello, Alisa 💖!
+                    </pre>
                 </section>
                 <section>
-                    <h2>Multithreading in Rust</h2>
-                    <pre><code class="rust" data-code="code/rust-multithreading/src/main.rs"></code></pre>
+                    <h3>Some slow Python code</h3>
+                    <pre><code class="python" data-code="code/simple_example/python_only.py"></code></pre>
+                    <pre>
+$ time python slow.py
+3.141624668
+python slow.py  247.18s user 0.01s system 99% cpu 4:07.36 total
                 </section>
                 <section>
-                    <h2>Python in Rust</h2>
-                    <pre><code class="rust" data-code="code/python-in-rust/src/main.rs"></code></pre>
+                    <h3>Python module in Rust</h3>
+                    <pre><code class="rust" data-code="code/simple_example/src/lib.rs"></code></pre>
+                </section>
+                <section>
+                    <h3>Multithreading in Rust</h3>
+                    <pre><code class="rust" data-code="code/multithreading/src/lib.rs"></code></pre>
+                </section>
+                <section>
+                    <h3>Python in Rust</h3>
+                    <pre><code class="rust" data-code="code/use_python_in_rust/src/main.rs"></code></pre>
                     <pre>$ Hello from Python 3.6.6 (default, Jun 27 2018, 13:11:40)</pre>
                 </section>
                 <section>
-                    <h2>Thank you!</h2>
+                    <h3>Thank you!</h3>
                     <p>Sven-Hendrik Haase</p>
                     <p><a href="http://svenstaro.org">svenstaro.org</a></p>
                     <p>

@@ -12,5 +12,4 @@ def calc(iterations):
 
     pi = 4 * (hits / float(iterations))
     return pi
-
 print(calc(10**9))

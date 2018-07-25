@@ -1,0 +1,12 @@
+[package]
+name = "simple_bind"
+version = "0.1.0"
+authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
+
+[lib]
+name = "simple_bind"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.3"
+features = ["extension-module"]
