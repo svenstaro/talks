@@ -10,3 +10,9 @@
 [submodule "europython-2018/Font-Awesome"]
 	path = europython-2018/externals/Font-Awesome
 	url = git://github.com/FortAwesome/Font-Awesome.git
+[submodule "europython-2018/externals/reveal.js-plugins"]
+	path = europython-2018/externals/reveal.js-plugins
+	url = git://github.com/rajgoel/reveal.js-plugins.git
+[submodule "europython-2018/externals/csshake"]
+	path = europython-2018/externals/csshake
+	url = https://github.com/elrumordelaluz/csshake.git

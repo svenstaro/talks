@@ -10,3 +10,9 @@
     vertical-align: middle !important;
     border: none !important;
 }
+
+.mascot {
+    position: absolute;
+    right: 0px;
+    top: 70px;
+}

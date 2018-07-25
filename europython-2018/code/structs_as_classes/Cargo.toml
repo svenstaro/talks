@@ -1,0 +1,12 @@
+[package]
+name = "rust_structs"
+version = "0.1.0"
+authors = ["Sven-Hendrik Haase <svenstaro@gmail.com>"]
+
+[lib]
+name = "rust_structs"
+crate-type = ["cdylib"]
+
+[dependencies.pyo3]
+version = "0.3"
+features = ["extension-module"]

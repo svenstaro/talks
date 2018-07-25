@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="externals/Font-Awesome/web-fonts-with-css/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="externals/csshake/dist/csshake.min.css">
         <link rel="stylesheet" href="externals/reveal.js/css/reveal.css">
         <link rel="stylesheet" href="externals/reveal.js/css/theme/serif.css">
         <link rel="stylesheet" href="externals/reveal.js/lib/css/zenburn.css">
@@ -84,6 +85,11 @@
                         <li class="fragment">Modern</li>
                         <li class="fragment">Fast</li>
                         <li class="fragment">Statically and strongly typed</li>
+                        <li class="fragment">Immutable by default</li>
+                        <li class="fragment">Amazing tooling</li>
+                        <li class="fragment">Great community</li>
+                        <li class="fragment">Cute mascot<img class="mascot" src="media/7df0bd42774743.57ee5f32bd76e.gif"/></li>
+                        <li class="fragment shake shake-constant">FEARLESS CONCURRENCY</li>
                     </ul>
                     <aside class="notes">
                         Safe: No null pointers, no multithreading issues
@@ -123,7 +129,7 @@ Hello, Charlie
                 </section>
                 <section>
                     <h3>Python module in Rust</h3>
-                    <pre class="fragment"><code class="rust" data-code="code/simple_bind/src/lib.rs"></code></pre>
+                    <pre><code class="rust" data-code="code/simple_bind/src/lib.rs"></code></pre>
                     <pre class="fragment"><code class="python" data-code="code/simple_bind/run.py"></code></pre>
                     <pre class="fragment">
 $ python europython.py
@@ -131,25 +137,67 @@ Hello, Alisa 💖!
                     </pre>
                 </section>
                 <section>
+                    <h3>Rust structs as Python classes</h3>
+                    <pre><code class="rust stretch" data-code="code/structs_as_classes/src/lib.rs"></code></pre>
+                </section>
+                <section>
                     <h3>Some slow Python code</h3>
+                    <p>Very crappy way to estimate π.
                     <pre><code class="python" data-code="code/simple_example/python_only.py"></code></pre>
-                    <pre>
+                    <pre class="fragment" data-fragment-index="2">
 $ time python slow.py
 3.141624668
 python slow.py  247.18s user 0.01s system 99% cpu 4:07.36 total
                 </section>
                 <section>
-                    <h3>Python module in Rust</h3>
-                    <pre><code class="rust" data-code="code/simple_example/src/lib.rs"></code></pre>
+                    <h3>We need to go <i class="shake shake-constant">faster</i></h3>
                 </section>
                 <section>
-                    <h3>Multithreading in Rust</h3>
-                    <pre><code class="rust" data-code="code/multithreading/src/lib.rs"></code></pre>
+                    <h3>Some faster Rust code 1/2</h3>
+                    <pre><code class="rust stretch" data-code="code/simple_example/src/calc.rs"></code></pre>
+                </section>
+                <section>
+                    <h3>Some faster Rust code 2/2</h3>
+                    <pre><code class="rust" data-code="code/simple_example/src/lib.rs"></code></pre>
+                    <pre class="fragment"><code class="python" data-code="code/simple_example/with_rust.py"></code></pre>
+                    <pre class="fragment">
+$ time python with_rust.py
+3.141672068
+python with_rust.py  4.95s user 0.00s system 99% cpu 4.966 total
+                    </pre>
+                </section>
+                <section>
+                    <h3>We need to go <i class="shake-hard shake-constant">even faster</i></h3>
+                </section>
+                <section>
+                    <h3>Multithreading in Rust 1/2</h3>
+                    <pre><code class="rust stretch" data-code="code/multithreading/src/calc.rs"></code></pre>
+                </section>
+                <section>
+                    <h3>Multithreading in Rust 2/2</h3>
+                    <pre><code class="rust stretch" data-code="code/multithreading/src/lib.rs"></code></pre>
+                    <pre class="fragment"><code class="python" data-code="code/multithreading/run.py"></code></pre>
+                    <pre class="fragment">
+$ time python multithreading.py
+3.142886888
+python multithreading.py  13.65s user 0.01s system 783% cpu 1.742 total
+                    </pre>
+                </section>
+                <section>
+                    <h3>We need to go <i class="shake-crazy shake-constant">FASTERRRRRR</i></h3>
+                </section>
+                <section>
+                    <h3>Pretty graphs</h3>
+                    <canvas data-chart="bar">
+                    Implementation, Python, Rust Singlethreaded, Rust Multithreaded
+                    Runtime in seconds, 247.18, 4.95, 1.74
+                    </canvas>
                 </section>
                 <section>
                     <h3>Python in Rust</h3>
                     <pre><code class="rust" data-code="code/use_python_in_rust/src/main.rs"></code></pre>
                     <pre>$ Hello from Python 3.6.6 (default, Jun 27 2018, 13:11:40)</pre>
+                    <p class="fragment">But why</p>
                 </section>
                 <section>
                     <h3>Thank you!</h3>
@@ -166,7 +214,12 @@ python slow.py  247.18s user 0.01s system 99% cpu 4:07.36 total
         <script src="externals/reveal.js/js/reveal.js"></script>
         <script>
             Reveal.initialize({
+                chart: {
+                    bar: { backgroundColor: [ "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]},
+                },
                 dependencies: [
+                    { src: 'externals/reveal.js-plugins/chart/Chart.min.js' },
+                    { src: 'externals/reveal.js-plugins/chart/csv2chart.js' },
                     { src: 'externals/reveal.js-plugin-externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
                     { src: 'externals/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
                     { src: 'externals/reveal.js/plugin/notes/notes.js', async: true },
