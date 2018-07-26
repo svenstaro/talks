@@ -15,6 +15,12 @@
                     <h2>Oxidize Your Snake</h2>
                     <p>Sven-Hendrik Haase</p>
                     <p><a href="http://svenstaro.org">svenstaro.org</a></p>
+                    <aside class="notes">
+                        - Let's get the boring stuff out of the way first.
+                        - I'm Sven and I'm a Python and Rust enthusiast.
+                        - In my day job I'm a freelance software consultant.
+                        - Currently mostly DevOps but I really do everything that's required.
+                    </aside>
                 </section>
                 <section>
                     <h3>This talk</h3>
@@ -25,8 +31,9 @@
                         <li class="fragment">Takeaways</li>
                     </ul>
                     <aside class="notes">
-                        I know there have been other Rust talks on this conference and that's great.
-                        I'm presenting a new method I think that hasn't been shown before.
+                        - I know there have been other Rust talks on this conference and that's great.
+                        - I'm presenting a new method I think that hasn't been shown before.
+                        - I'm going to assume that you have no Rust knowledge.
                     </aside>
                 </section>
                 <section>
@@ -37,20 +44,20 @@
                         <li class="fragment">Bind to existing system-libraries</li>
                     </ul>
                     <aside class="notes">
-                        There are probably more reasons but I feel these are the main ones.
-                        Primarily the reason we don't write everything in Python is speed.
+                        - There are probably more reasons but I feel these are the main ones.
+                        - Primarily the reason we don't write everything in Python is speed.
                     </aside>
                 </section>
                 <section>
                     <h3>Ways to speed up Python</h3>
                     <p class="fragment" data-fragment-index="1">Manual/C: Python C extensions, ctypes, cffi</p>
-                    <p class="fragment" data-fragment-index="2">Binding generator: Boost.Python, SWIG<span class="fragment" data-fragment-index="6">, <strong><u>PyO3</u></strong></span></p>
+                    <p class="fragment" data-fragment-index="2">Binding generator: Boost.Python, SWIG<span class="fragment" data-fragment-index="6">, <strong><u class="rainbow">PyO3</u></strong></span></p>
                     <p class="fragment" data-fragment-index="3">Specialized lib: pillow, numpy</p>
                     <p class="fragment" data-fragment-index="4">JIT: pypy</p>
                     <p class="fragment" data-fragment-index="5">Python-like dialect: cython</p>
                     <aside class="notes">
-                        You might disagree with my classifications but this is
-                        just how I think about it.
+                        - There are all kinds of ways to speed up Python.
+                        - You might disagree with my classifications but this is just how I think about it.
                     </aside>
                 </section>
                 <section>
@@ -72,11 +79,11 @@
                 </section>
                 <section class="center">
                     <h3>Instead, oxidize your snake</h3>
-                        <img class="vertical-align" width="150" src="media/2000px-Python-logo-notext.svg.png">
-                        <i class="fas fa-plus"></i>
-                        <img class="vertical-align" width="150" src="media/Rust_programming_language_black_logo.svg.png">
-                        <i class="fas fa-equals"></i>
-                        <img class="vertical-align" width="530" src="media/oxidized_snek.jpg">
+                    <img class="vertical-align" width="150" src="media/2000px-Python-logo-notext.svg.png">
+                    <i class="fas fa-plus"></i>
+                    <img class="vertical-align" width="150" src="media/Rust_programming_language_black_logo.svg.png">
+                    <i class="fas fa-equals"></i>
+                    <img class="vertical-align fragment" width="530" src="media/oxidized_snek.jpg">
                 </section>
                 <section>
                     <h3>What is Rust?</h3>
@@ -86,6 +93,7 @@
                         <li class="fragment">Fast</li>
                         <li class="fragment">Statically and strongly typed</li>
                         <li class="fragment">Immutable by default</li>
+                        <li class="fragment">Private by default</li>
                         <li class="fragment">Amazing tooling</li>
                         <li class="fragment">Great community</li>
                         <li class="fragment">Cute mascot<img class="mascot" src="media/7df0bd42774743.57ee5f32bd76e.gif"/></li>
@@ -137,14 +145,23 @@ Hello, Alisa 💖!
                     </pre>
                 </section>
                 <section>
-                    <h3>Rust structs as Python classes</h3>
-                    <pre><code class="rust stretch" data-code="code/structs_as_classes/src/lib.rs"></code></pre>
+                    <h3>Structs as Python classes 1/2</h3>
+                    <pre><code class="rust stretch" data-code="code/structs_as_classes/src/our_class.rs"></code></pre>
+                </section>
+                <section>
+                    <h3>Structs as Python classes 2/2</h3>
+                    <pre><code class="rust" data-code="code/structs_as_classes/src/lib.rs"></code></pre>
+                    <pre class="fragment"><code class="python" data-code="code/structs_as_classes/run.py"></code></pre>
+                    <pre class="fragment">
+$ python classes.py
+4
+                    </pre>
                 </section>
                 <section>
                     <h3>Some slow Python code</h3>
                     <p>Very crappy way to estimate π.
-                    <pre><code class="python" data-code="code/simple_example/python_only.py"></code></pre>
-                    <pre class="fragment" data-fragment-index="2">
+                        <pre><code class="python" data-code="code/simple_example/python_only.py"></code></pre>
+                        <pre class="fragment" data-fragment-index="2">
 $ time python slow.py
 3.141624668
 python slow.py  247.18s user 0.01s system 99% cpu 4:07.36 total
@@ -189,8 +206,8 @@ python multithreading.py  13.65s user 0.01s system 783% cpu 1.742 total
                 <section>
                     <h3>Pretty graphs</h3>
                     <canvas data-chart="bar">
-                    Implementation, Python, Rust Singlethreaded, Rust Multithreaded
-                    Runtime in seconds, 247.18, 4.95, 1.74
+                        Implementation, Python, Rust Singlethreaded, Rust Multithreaded
+                        Runtime in seconds, 247.18, 4.95, 1.74
                     </canvas>
                 </section>
                 <section>
@@ -200,13 +217,22 @@ python multithreading.py  13.65s user 0.01s system 783% cpu 1.742 total
                     <p class="fragment">But why</p>
                 </section>
                 <section>
+                    <h3>Takeaways</h3>
+                    <ul>
+                        <li class="fragment">Rust can make your Python fast</li>
+                        <li class="fragment">PyO3 makes integration easy</li>
+                    </ul>
+                </section>
+                <section>
                     <h3>Thank you!</h3>
                     <p>Sven-Hendrik Haase</p>
-                    <p><a href="http://svenstaro.org">svenstaro.org</a></p>
-                    <p>
+                    <p><a href="https://svenstaro.org">https://svenstaro.org</a></p>
+                    <p>svenstaro@gmail.com</p>
+                    <p><small>You can hire me and my team</small></p>
+                    <p><small>Slides at
                         <a href="https://github.com/svenstaro/talks/tree/master/europython-2018">
-                            <small>https://github.com/svenstaro/talks/tree/master/europython-2018</small></a>
-                    </p>
+                            https://github.com/svenstaro/talks/tree/master/europython-2018</a>
+                    </small></p>
                 </section>
             </div>
         </div>
