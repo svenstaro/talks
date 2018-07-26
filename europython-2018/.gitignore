@@ -3,3 +3,5 @@ externals/
 Cargo.lock
 **/*.rs.bk
 *.so
+build/
+__pycache__
