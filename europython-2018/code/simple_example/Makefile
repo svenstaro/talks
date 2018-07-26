@@ -4,11 +4,20 @@ simple_example.so: src/
 
 .PHONY: run_rust
 run_rust: simple_example.so
-	hyperfine 'python with_rust.py'
+	time python with_rust.py
 
-.PHONY: run_native
-run_python:
-	hyperfine 'python python_only.py'
+.PHONY: run_cpython
+run_cpython:
+	time python python_only.py
+
+.PHONY: run_pypy
+run_pypy:
+	time pypy3 python_only.py
+
+.PHONY: run_cython
+run_cython:
+	python setup.py build_ext --inplace
+	time python -c "import with_cython"
 
 .PHONY: clean
 clean:
