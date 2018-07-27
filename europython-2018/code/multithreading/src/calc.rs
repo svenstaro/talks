@@ -1,5 +1,5 @@
-use rand::rngs::SmallRng;
-use rand::{thread_rng, Rng, SeedableRng};
+use rng::rng_maker;
+use rand::Rng;
 use rayon::prelude::*;
 
 fn in_circle(x: f64, y: f64) -> bool {
@@ -7,10 +7,9 @@ fn in_circle(x: f64, y: f64) -> bool {
 }
 
 pub fn calc(iterations: u64) -> f64 {
-    let rng = SmallRng::from_rng(thread_rng()).unwrap();
     let hits = (1..iterations)
         .into_par_iter()
-        .map_with(rng, |rng, _| {
+        .map_with(rng_maker(), |rng, _| {
             if in_circle(rng.gen(), rng.gen()) {
                 1
             } else {

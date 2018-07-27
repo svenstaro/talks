@@ -1,13 +1,13 @@
 #![feature(use_extern_macros, specialization)]
-use rand::rngs::SmallRng;
-use rand::{thread_rng, Rng, SeedableRng};
+use rand::Rng;
+use rng::rng_maker;
 
 fn in_circle(x: f64, y: f64) -> bool {
     (x * x + y * y).sqrt() <= 1.0
 }
 
 pub fn calc(iterations: u64) -> f64 {
-    let mut rng = SmallRng::from_rng(thread_rng()).unwrap();
+    let mut rng = rng_maker();
     let hits = (1..iterations)
         .map(|_| {
             if in_circle(rng.gen(), rng.gen()) {

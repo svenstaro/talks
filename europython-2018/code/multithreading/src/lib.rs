@@ -3,7 +3,7 @@ extern crate pyo3;
 extern crate rand;
 extern crate rayon;
 use pyo3::prelude::*;
-mod calc;
+mod calc; mod rng;
 
 #[pymodinit]
 fn multithreading(_: Python, m: &PyModule) -> PyResult<()> {

@@ -4,7 +4,7 @@ multithreading.so: src/
 
 .PHONY: run
 run: multithreading.so
-	hyperfine 'python run.py'
+	time python run.py
 
 .PHONY: clean
 clean:
