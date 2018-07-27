@@ -1,0 +1,13 @@
+grep replacement: rg (ripgrep)
+curl replacement: http (httpie)
+cloc replacement: tokei
+find replacement: fd
+cat replacement: bat
+ls replacement: exa
+htop replacement: glances
+midnight commander replacement: vifm
+file browser: ranger
+fuzzy stuff: fzf
+silly stuff: genact
+benchmarking: hyperfine
+https://github.com/svenstaro/dotfiles
