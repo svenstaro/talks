@@ -1,0 +1,16 @@
+********************************
+*  Amazing Command Line Tools  *
+********************************
+
+ls replacement: exa
+cloc replacement: tokei
+grep replacement: rg (ripgrep)
+cat replacement: bat
+find replacement: fd
+benchmarking: hyperfine
+curl replacement: http (httpie)
+htop replacement: glances
+file browser: ranger
+fuzzy stuff: fzf
+silly stuff: genact
+https://github.com/svenstaro/dotfiles
