@@ -52,7 +52,10 @@ Making HTTP reqs        curl            httpie
 Show file contents      cat/less        bat
 Replace text            sed             sd
 Benchmarking/timing     time            hyperfine
+Presenting/slides       PowerPoint      mdp
 Pretending to do work   compiling Linux genact
+^
+*Ok, kidding about the last two.
 
 ^
 Let's have a look!
