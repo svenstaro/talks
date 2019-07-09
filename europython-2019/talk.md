@@ -44,7 +44,7 @@ Many fancy modern tools
 
 ^
 _*Task                    Traditional     Modern*_
-Listing files           ls              exa
+Listing files           ls/tree         exa
 Finding files           find            fd
 Searching in fles       grep            ripgrep
 Counting LoC            cloc            tokei
@@ -67,7 +67,7 @@ Let's have a look!
 
 [exa](https://github.com/ogham/exa)
 
-Like `ls`, but
+Like `ls` or `tree`, but
 * Pretty
 * git support
 
@@ -129,6 +129,7 @@ Like `curl`, but
 Like `cat` or `less`, but has
 * Syntax highlighting support
 * Automatic pager for long files
+* git support
 
 ---
 
@@ -148,6 +149,7 @@ Like `sed`, but
 Like `time`, but has
 * Initial warm-up phase
 * Multiple runs for better overall measurements
+* Also pretty *:D*
 
 [hyperfine](https://github.com/sharkdp/hyperfine)
 
