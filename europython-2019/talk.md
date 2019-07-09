@@ -27,7 +27,7 @@
 ^
 * It's efficient for many kinds of tasks
 ^
-*
+* Sometimes you can't use a GUI
 ^
 * Text is still the only truly universal exchange format
 ^
