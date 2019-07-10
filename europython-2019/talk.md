@@ -68,8 +68,6 @@ Replace text            sed             sd
 Benchmarking/timing     time            hyperfine
 Presenting/slides       PowerPoint      mdp
 Pretending to do work   compiling Linux genact
-^
-*Ok, kidding about the last two.
 
 ^
 Let's have a look!
@@ -166,6 +164,15 @@ Like `time`, but has
 * Also pretty *:D*
 
 [hyperfine](https://github.com/sharkdp/hyperfine)
+
+---
+
+-> Bonus: mdp - Presentation tool
+=================================
+
+Like PowerPoint, but
+* with 1% of the features
+* on the command line
 
 ---
 
