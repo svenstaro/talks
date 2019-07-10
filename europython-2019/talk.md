@@ -10,7 +10,21 @@
 
 ---
 
--> About Me
+-> This talk
+============
+
+^
+* I'll show you a comparison of old and new tools
+^
+* You don't need to know any of the tools
+^
+* Basically only live demos, *what could go wrong*
+^
+* Final take-away for you: cool new tools
+
+---
+
+-> About me
 ===========
 
 * Command line enthusiast   *\\o
@@ -136,7 +150,7 @@ Like `cat` or `less`, but has
 -> sd - Replace text
 ====================
 
-[sg](https://github.com/chmln/sd)
+[sd](https://github.com/chmln/sd)
 
 Like `sed`, but
 * User friendly

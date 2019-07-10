@@ -11,6 +11,9 @@
 - ls -l
 - exa -l
 - exa -l --git
+- tree
+- tree -Duhp
+- exa --tree -l --git
 
 ## fd
 
@@ -19,8 +22,9 @@
 - fd readme ~/src/linux
 
 - Let's find all Python files in cpython
-- find ~/src/cpython -name '*.py'
-- fd ~/src/cpython -e py
+- find ~/src/cpython -name '*parser*.py'
+- fd parser -e py ~/src/cpython
+- fd parser -e py -e rst ~/src/cpython
 
 - Ignores files ignored by git by default
 - fd ignored
@@ -47,7 +51,7 @@
 - cloc ~/src/cpython
 - tokei ~/src/cpython
 - Let's see how much Python code I have in all of my sources
-- tokei -t Python ~/src
+- tokei -t C ~/src
 
 ## httpie
 
@@ -60,6 +64,7 @@
 - Let's send some JSON
 - curl -d '{"hello":"world"}' -H "Content-Type: application/json" -X POST localhost:8080
 - http localhost:8080 hello=world
+- http -pHhBb localhost:8080 hello=world
 
 ## bat
 
