@@ -7,11 +7,14 @@
   </head>
   <body>
     <textarea id="source">
+count: false
 
 # Arch Linux Theme
 
-#### Sven-Hendrik Haase [&lt;john@doe.com&gt;](mailto:john@doe.com)
-
+## Main Title
+### .gray[Sub Title]
+#### Sven-Hendrik Haase [&lt;sven@archlinux.org&gt;](mailto:sven@archlinux.org)
+      
 ---
 
 # Agenda
@@ -112,7 +115,10 @@ if i'm not mistaken you decided to write own service but not sure instead of wha
     <script src="js/remark-latest.min.js">
     </script>
     <script>
-      const slideshow = remark.create();
+        const slideshow = remark.create({
+            ratio: '16:9',
+            countIncrementalSlides: false,
+        });
     </script>
   </body>
 </html>
