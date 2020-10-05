@@ -1,7 +1,3 @@
-# Arch Linux Remarkjs Theme
+# Arch Conf 2020 Talk: Infrastructure at Arch
 
-A simple Arch based [remarkjs](https://github.com/gnab/remark) theme.
-
-# Usage
-
-Fork or copy the repository and start editing the index.html.
+Clone this and start local webserver in this directory and then navigate to `index.html`.
