@@ -1,116 +1,345 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Arch Linux RemarkJS Theme</title>
+    <title>Infrastructure at Arch</title>
     <meta charset="utf-8">
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
   </head>
   <body>
     <textarea id="source">
 count: false
 
-# Arch Linux Theme
-
-## Main Title
-### .gray[Sub Title]
+# Infrastructure at Arch
+### .gray[Making servers go <i>brrrrr</i>]
 #### Sven-Hendrik Haase [&lt;sven@archlinux.org&gt;](mailto:sven@archlinux.org)
-      
+
 ---
 
 # Agenda
 
-1. Introduction
-        - How was it back in the days
-        - How is it changing
-2. Current development
-3. Future plans
-        - Next on track
-        - How can you help
+.float-left[
+1. About me
+2. DevOps team
+3. Overview
+4. The past
+5. The present
+6. The future
+7. Get involved
+]
+
+.scaled-image[![Arch Linux Server Datacenter](img/archlinux-server-datacenter.png)]
 
 ---
 
-# Introduction
-1. Team (dev team in more details)
-2. Personal preentation and responsibility zone
-3. List of services (both open and closed) that are/will be changed
+# About me
 
+--
+- Freelance DevOps consultant and software architect
 
----
+--
+- Involved in many open-source projects
 
-# Current Development
+--
+- Joined Arch in 2010 as Trusted User
 
-* technological newcomers: gitlab, keycloak, ansible, terraform, borg (?)
-* dropped technologies and approaches: manual bash/python script execution
-
----
-
-# Gitlab
-
-- central code repository, issue tracker
-- why? powerful cicd, most of the integrations are present - here reasons behind gitlab 
-- how? which functionality of gitlab has/can improve things 
-- what is done? specific things running and set up already
-- example of a workflow available influencnig specific service (for example testing with VMs before image release)
+--
+- Now Trusted User, Developer, DevOps
 
 ---
 
-# KeyCloak
+# DevOps team
 
-- SSO enabler
-- why? security ways are mysterious and hard, but required
-- how? flow definition, single source of functionality, multifunctional
-- what? an example of the flow auth (maybe a short demo?)
-- services affected
-
----
-
-# FastAPI
-
-if i'm not mistaken you decided to write own service but not sure instead of what or as an addition to what? wiki?
+Current full members
+- Evangelos Foutras (foutrelis)
+- Frederik Schwan (freswa)
+- Giancarlo Razzolini (grazzolini)
+- Jan Alexander Steffens (heftig)
+- Jelle von der Waa (jelle)
+- Levente Polyak (anthraxx)
+- Sven-Hendrik Haase (svenstaro)
 
 ---
 
-# Automations: Ansible
+# Overview
+## Servers
 
-- why? desparate need of non-manual execution (chron, security, reproducibility reasons)
-- how? are there atrenatives? what does it allow which previous approach did not?
-- what? which parts of the platform are affected?   
-- real example?
+--
+- Mostly hosted at Hetzner
 
----
+--
+- 6 Hetzner bare-metal servers
+- 17 Hetzner cloud servers
 
-# Automations: Terraform
+--
+- 2 different offsite backup servers for Borg
 
-- why? why and where was it needed?
-- how? wat have you gained? downsides?
-- what? examples of usage for parts of the platform
-- concrete example? (not sure it makes sense)
-
----
-
-# What is left?
-
-* services that are not refactored 
-* what is planned for them
-* Example?
+--
+- 5 sponsored servers by Kape (thanks guys)
 
 ---
 
-# Future plans
+# Overview
+## Services
 
-* roadmap from your kanban board if you have one
-* more power?
-* black spots - what you will not touch in the near future and why
+--
+.float-left[
+15 public services
+        - Accounts (SSO/Keycloak)
+        - Archive
+        - AUR (aurweb)
+        - BBS (fluxbb)
+        - bug tracker (flyspray)
+        - GitLab
+        - cgit
+        - IRC bot (Phrik)
+        - Mailing lists (mailman)
+        - main page (archweb)
+        - mirrorlist (archweb)
+        - Packages (rsync)
+        - patch tracker (patchwork)
+        - security tracker
+        - wiki (MediaWiki)
+]
+
+--
+.float-right[
+6 staff-only services
+        - Build server
+        - Kanboard
+        - Mail servers
+        - Monitoring stack (Grafana, Prometheus, Alertmanager)
+        - Matrix
+        - Quassel
+]
 
 ---
-# Any volounteers?
 
-* Who and how can help
-* Open issues
-* Other ways of contributing
+# Overview
+## Code
+
+--
+- Infrastructure-as-Code where possible
+
+--
+    - Terraform where we can
+    - Ansible where we must
+--
+- 8000 lines of YAML (mostly Ansible)
+
+--
+- 2000 lines of HCL (Terraform)
+
+--
+- 63 Ansible roles
 
 ---
 
+# The past
+## Dark times
+
+--
+- Everything was manually managed
+
+--
+- No centralized server management
+
+--
+- Everyone managed their own services
+
+???
+Sometimes this happened via various custom bash scripts that no-one else had.
+
+--
+- Essentially no docs
+
+--
+- Bus factor 1
+
+--
+- Hard for outsiders to collaborate
+
+--
+- No DevOps team - only lose collection of different accesses
+
+--
+- No centralized issue management
+
+--
+- Virtually no automations outside of cron
+
+---
+
+# The past
+## Road to enlightenment
+
+--
+- First Ansible git commit in May 2016
+
+--
+- Steady stream of migrations towards Ansible
+
+--
+- Started using Terraform in Feb 2019
+
+--
+- Documented stuff
+
+--
+- Formation of a DevOps team
+
+---
+
+# The present
+## General
+
+--
+- Proper DevOps team with consistent access
+
+--
+- Most things now in Ansible/Terraform
+
+--
+- Many important things documented
+
+--
+- Migration from bare-metal servers to cloud servers
+???
+Hetzner cloud server are very easy to manage. We provision them via Packer images.
+
+--
+- Automations, CI
+
+---
+
+# The present
+## GitLab
+
+--
+- We now have GitLab \o/
+
+--
+- Central place for code hosting, issues and collaboration
+
+--
+- Merge requests are a thing now (bye bye mailing list patches)
+
+--
+- Getting rid of patchwork, flyspray, kanboard
+
+--
+- Global overview of all Arch Linux issues  
+  https://gitlab.archlinux.org/groups/archlinux/-/issues
+
+--
+- Powerful CI for everything
+???
+Example for CI: arch-boxes (walk-through CI and describe release automation)
+
+---
+
+# The present
+## Arch Linux SSO
+
+--
+- Consistent, secure, central account management (Arch Linux SSO)
+
+--
+- Managed access levels
+???
+Before, onboarding was error-prone and tedious manual labor.
+
+==> Demo login to gitlab.archlinux.org
+
+--
+
+- One account for everything
+???
+Account merging for wiki, AUR, bbs will be hard and we'll need a lot more time for this.
+
+--
+
+- 2FA everywhere
+
+--
+- Keycloak
+
+---
+
+# The future
+## Migrations
+
+--
+- Allow everyone to register on SSO
+
+--
+- Connecting most services to SSO
+
+--
+- Finish migration to GitLab
+
+--
+- Migrate from mailman 2 to mailman 3
+
+--
+- Automate all the things
+
+--
+- Get rid of most bare-metal servers
+
+---
+
+# The future
+## Known issues
+
+--
+- BBS software (fluxbb) is basically unmaintained
+???
+This is a security problem. We should migrate to another forums software.
+
+--
+- No ssh audit logs (maybe use AWX)
+
+--
+- Current mail setup really needs renovation
+
+--
+- GDPR compliance automation
+
+---
+
+# Get involved
+
+--
+- Arch is 100% volunteers
+
+--
+- Everything we do is public!  
+  https://gitlab.archlinux.org/archlinux/infrastructure
+
+--
+- Recent influx of active collaborators
+
+--
+- Always need more people helping out
+
+--
+- Join via **#archlinux-devops** in Freenode IRC and just ask to help out
+
+--
+- Mailing list: https://lists.archlinux.org/listinfo/arch-devops
+
+--
+- We're a super friendly bunch and breaking servers is fun :D
+
+--
+- You don't have to be an expert to help
+???
+Just pick an issue, ask for mentoring and off you go.
+
+You will learn a lot and accidentally become an expert in some new technology.
+
+---
     </textarea>
     <script src="js/remark-latest.min.js">
     </script>

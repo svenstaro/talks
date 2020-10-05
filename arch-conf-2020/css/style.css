@@ -38,7 +38,7 @@
  ***************************************************************/
 
 body {
-    font-family: 'Liberation Sans', arial, helvetica, sans-serif;
+    font-family: 'Roboto';
 }
 
 h1 {
@@ -47,6 +47,7 @@ h1 {
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
+    font-family: 'Yanone Kaffeesatz';
 }
 
 a {
@@ -56,6 +57,21 @@ a {
 
 li {
     padding-bottom: 0.5rem;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.scaled-image img {
+    margin-left: 10em;
+    width: 40%;
+    height: auto;
+    display: inline-block;
 }
 
 /***************************************************************
